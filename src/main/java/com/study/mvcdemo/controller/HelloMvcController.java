@@ -1,4 +1,4 @@
-package com.study.controller;
+package com.study.mvcdemo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by paddy on 2017-2-26.
  */
 @Controller
-@RequestMapping("/hello")
+@RequestMapping("/")
 public class HelloMvcController {
     
-    @RequestMapping("/index")
+    @RequestMapping("/")
     public String helloMvc(){
         return "home";
     }

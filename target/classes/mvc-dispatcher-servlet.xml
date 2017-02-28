@@ -14,20 +14,32 @@
     <context:annotation-config/>
 
     <!--DispatcherServlet上下文，只搜索@Controller标注的类，不搜索其他标注的类-->
-    <context:component-scan base-package="com.study.controller">
-        <!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+    <context:component-scan base-package="com.study.mvcdemo.controller">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <mvc:default-servlet-handler/>
+    <!--静态资源管理-->
+    <!--<mvc:default-servlet-handler/>-->
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+
+    <!--扩充注解驱动，可以将请求参数绑定到控制器参数-->
     <mvc:annotation-driven/>
 
+
+    <!--配置ViewResolver。
+    可以用多个ViewResolver。
+    使用order属性排序
+    InternalResourceViewResolver放在最后。
+    -->
     <!--指定解析器-->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="jspViewResolver">
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <!--前缀-->
         <property name="prefix" value="/WEB-INF/jsps/"/>
         <!--后缀-->
         <property name="suffix" value=".jsp"/>
     </bean>
+
+    
 
 </beans>
